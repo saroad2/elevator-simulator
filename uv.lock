@@ -1,0 +1,19 @@
+version = 1
+revision = 3
+requires-python = ">=3.13"
+
+[manifest]
+members = [
+    "elevator-simulator",
+    "elevator-simulator-core",
+]
+
+[[package]]
+name = "elevator-simulator"
+version = "0.1.0"
+source = { editable = "." }
+
+[[package]]
+name = "elevator-simulator-core"
+version = "0.1.0"
+source = { editable = "packages/elevator-simulator-core" }

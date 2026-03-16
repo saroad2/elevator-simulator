@@ -1,0 +1,21 @@
+[project]
+name = "elevator-simulator"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Sagi Buchbinder Shadur", email = "saroad2@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = []
+
+[build-system]
+requires = ["uv_build>=0.10.10,<0.11.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "elevator_simulator"
+namespace = true
+
+[tool.uv.workspace]
+members = ["packages/*"]
