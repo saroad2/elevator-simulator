@@ -1,5 +1,5 @@
 [project]
-name = "elevator-simulator-core"
+name = "elevator-simulator-gui"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -7,12 +7,21 @@ authors = [
     { name = "Sagi Buchbinder Shadur", email = "saroad2@gmail.com" }
 ]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "elevator-simulator-core",
+    "pygame>=2.6.1",
+]
+
+[project.gui-scripts]
+elesim = "elevator_simulator.gui.__main__:main"
 
 [build-system]
 requires = ["uv_build>=0.10.10,<0.11.0"]
 build-backend = "uv_build"
 
 [tool.uv.build-backend]
-module-name = "elevator_simulator"
+module-name = "elevator-simulator"
 namespace = true
+
+[tool.uv.sources]
+elevator-simulator-core = { workspace = true }
