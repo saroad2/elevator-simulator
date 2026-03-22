@@ -19,6 +19,14 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 raise SystemExit
+            if event.type == pygame.KEYDOWN:
+                key = event.key
+                if pygame.K_0 <= key <= pygame.K_9:
+                    target_floor = key - pygame.K_0
+                    try:
+                        elevator.set_target_floor(target_floor)
+                    except ValueError:
+                        pass
 
         elevator.update()
 
