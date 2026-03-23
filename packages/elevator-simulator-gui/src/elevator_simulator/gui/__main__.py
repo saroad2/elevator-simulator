@@ -2,11 +2,14 @@ import pygame
 
 from elevator_simulator.core.elevator import Elevator
 from elevator_simulator.gui.constants import SCREEN_WIDTH, SCREEN_HEIGHT
-from elevator_simulator.gui.draw_methods import draw_elevator
+from elevator_simulator.gui.draw_methods import ElevatorSimulatorDrawer
 
 pygame.init()
+pygame.font.init()
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+drawer = ElevatorSimulatorDrawer()
 
 clock = pygame.time.Clock()
 
@@ -31,7 +34,8 @@ def main():
         elevator.update()
 
         screen.fill("white")
-        draw_elevator(elevator=elevator, screen=screen)
+        drawer.draw_levels(max_level=elevator.max_floor, screen=screen)
+        drawer.draw_elevator(elevator=elevator, screen=screen)
 
         pygame.display.flip()
         clock.tick(60)
