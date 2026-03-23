@@ -18,6 +18,7 @@ elevator = Elevator()
 
 def main():
     while True:
+        elapsed_seconds = 0.001 * clock.get_time()  # Milliseconds to seconds
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -31,7 +32,7 @@ def main():
                     except ValueError:
                         pass
 
-        elevator.update()
+        elevator.update(elapsed_seconds)
 
         screen.fill("white")
         drawer.draw_levels(max_level=elevator.max_floor, screen=screen)

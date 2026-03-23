@@ -1,13 +1,9 @@
-import time
-
-
 class Elevator:
     def __init__(self):
         self.current_location = 0.0
         self.seconds_per_floor = 1.0
         self.max_floor = 3
         self.target_floor = None
-        self.last_update_time = time.perf_counter()
 
     def set_target_floor(self, floor: int | None = None):
         if floor is None:
@@ -17,9 +13,7 @@ class Elevator:
             raise ValueError(f"Floor must be between 0 and {self.max_floor}")
         self.target_floor = floor
 
-    def update(self):
-        now = time.perf_counter()
-        elapsed_seconds = now - self.last_update_time
+    def update(self, elapsed_seconds: float):
         direction = self._get_direction()
         if direction != 0:
             next_location = (
@@ -27,7 +21,6 @@ class Elevator:
                 + direction * elapsed_seconds * self.seconds_per_floor
             )
             self._set_current_location(next_location)
-        self.last_update_time = now
 
     def _get_direction(self) -> int:
         if self.target_floor is None:
